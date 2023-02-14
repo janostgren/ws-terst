@@ -1,1 +1,1 @@
-# ws-terst
+# ws-test Test Web sockets libs
