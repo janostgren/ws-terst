@@ -17,6 +17,7 @@ export class WsTester extends EventEmitter {
     this.myLogger = log4sj.getLogger("WsTester");
     this.myLogger.level='debug'
     this.client = new Client(domain, userid, token);
+    
     this.ws = this.client.websocket();
     this.ws.on("close", (code, reason) => {
         this.myLogger.error(
@@ -29,6 +30,7 @@ export class WsTester extends EventEmitter {
             `Error when initializing websocket connection.\n${e.stack}`,
         );
     });
+    
   }
 
   public async init() {
@@ -45,8 +47,11 @@ export class WsTester extends EventEmitter {
     let ok:boolean=true
     while (ok)  {
         try {
+          await this.sleep(2000)
+          let me=await this.client.get('/users/me')
+          console.log(me)
 
-            await this.sleep(2000)
+           
 
         }
         catch(err) {

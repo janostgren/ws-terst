@@ -7,8 +7,7 @@ import { EventEmitter } from "events";
 
 import * as log4js from "log4js";
 import * as FormData from "form-data";
-import { timeStamp } from "console";
-import { resolve } from "path";
+
 
 export type Method = "GET" | "POST" | "PUT" | "DELETE";
 
@@ -39,7 +38,8 @@ export class Client {
       httpsAgent: httpsAgent,
       httpAgent: httpAgent,
       headers: {
-        Authorization: bearer,
+        "Authorization": bearer
+        
       },
     });
   }
@@ -200,7 +200,9 @@ export class ClientWebsocket extends EventEmitter {
       followRedirects: true,
       
       headers: {
-        Authorization: "Bearer " + this.client.token,
+        "Authorization": "Bearer " + this.client.token,
+        
+        
       },
       
     };
@@ -208,16 +210,17 @@ export class ClientWebsocket extends EventEmitter {
     this.ws = new WebSocket(wsUrl, [],options);
 
     let resolve;
-    let openPromise = new Promise((r) => (resolve = r));
+    //let openPromise:Promise<any>= new Promise((r) => (resolve = r));
 
     this.ws.on("open", async () => {
       this.myLogger.debug("ws open event ");
-      /*
+      
       await this.send("authentication_challenge", {
         token: this.client.token,
       });
       resolve();
-      */
+      
+      
       
       
     });
