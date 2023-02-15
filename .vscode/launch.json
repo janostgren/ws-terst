@@ -7,22 +7,14 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "Launch bridge",
+      "name": "Launch ws-tester",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/build/index.js",
-      "args": ["-c", "./config.yaml", "-f", "./registration.yaml"],
-      "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": ["${workspaceFolder}/build/**/*.js"]
-    },
-    {
-      "type": "pwa-node",
-      "request": "launch",
-      "name": "Launch test",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "build/tests/02-message.js",
-      "env": {
-        "INTEGRATION_MANUAL_DOCKER ": "true"
-      },
+      "program": "build/index.js",
+      "args": [
+        "--domain", "http://localhost:8065",
+        "--userid", "geds3gxhdf81dccdrm8bfx37ry",
+        "--token", "6oc63eojpnixbdwy78ycte4qa"],
+     
       "outFiles": ["${workspaceFolder}/build/**/*.js"]
     }
   ]
