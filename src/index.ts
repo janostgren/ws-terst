@@ -17,7 +17,7 @@ const argv = yargs
   }).argv;
 
     const myLogger: log4js.Logger = log4js.getLogger('index.js');
-    const wsTester:WsTester=new WsTester(argv.domain,argv.user,argv.token)
+    const wsTester:WsTester=new WsTester(argv.domain,argv.userid,argv.token)
     
    
     process.on('SIGTERM', () => {

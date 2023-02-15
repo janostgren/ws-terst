@@ -2,7 +2,8 @@ import EventEmitter = require("events");
 
 import * as log4sj from "log4js";
 
-import { Client, ClientWebsocket } from "./Client";
+//import { Client, ClientWebsocket } from "./Client";
+import { Client, ClientWebsocket } from "./faye-ws/Client";
 
 export class WsTester extends EventEmitter {
   private myLogger: log4sj.Logger;
@@ -20,7 +21,7 @@ export class WsTester extends EventEmitter {
     this.ws = this.client.websocket();
     this.ws.on("close", (code, reason) => {
         this.myLogger.error(
-            'Websocket closed code=%d , reason=%s',code, reason.toString()
+            'Websocket closed code=%s , reason=%s',code, reason ? reason.toString():""
         );
         this.stop(1)
     });

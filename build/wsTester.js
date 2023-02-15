@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.WsTester = void 0;
 const EventEmitter = require("events");
 const log4sj = require("log4js");
-const Client_1 = require("./Client");
+//import { Client, ClientWebsocket } from "./Client";
+const Client_1 = require("./faye-ws/Client");
 class WsTester extends EventEmitter {
     constructor(domain, userid, token) {
         super();
@@ -15,7 +16,7 @@ class WsTester extends EventEmitter {
         this.client = new Client_1.Client(domain, userid, token);
         this.ws = this.client.websocket();
         this.ws.on("close", (code, reason) => {
-            this.myLogger.error('Websocket closed code=%d , reason=%s', code, reason.toString());
+            this.myLogger.error('Websocket closed code=%s , reason=%s', code, reason ? reason.toString() : "");
             this.stop(1);
         });
         this.ws.on('error', e => {

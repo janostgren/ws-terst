@@ -16,7 +16,7 @@ const argv = yargs
     demand: true,
 }).argv;
 const myLogger = log4js.getLogger('index.js');
-const wsTester = new wsTester_1.WsTester(argv.domain, argv.user, argv.token);
+const wsTester = new wsTester_1.WsTester(argv.domain, argv.userid, argv.token);
 process.on('SIGTERM', () => {
     myLogger.info('Received SIGTERM. Shutting down bridge.');
 });
